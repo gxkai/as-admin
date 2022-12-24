@@ -14,7 +14,7 @@ if (document) {
 export interface LoadingBarInstance extends Function {
   start(): void
   update(value: number): void
-  finish(onClose?: () => void): void
+  finish: (opts?: { onClose?: () => void }) => void
 }
 
 interface LoadingBarOptions {
@@ -24,7 +24,7 @@ interface LoadingBarOptions {
   onClose?: () => void
 }
 
-export const LoadingBar = (
+export const LoadingBar = ((
   options: LoadingBarOptions = {}
 ): ComponentPublicInstance => {
   const onClose = options.onClose
@@ -40,7 +40,8 @@ export const LoadingBar = (
   })
 
   return instance
-}
+}) as ((options: LoadingBarOptions) => ComponentPublicInstance) &
+  LoadingBarInstance
 
 LoadingBar.start = (options: LoadingBarOptions = {}): void => {
   const dataObj = instance?.$data as Record<string, any>

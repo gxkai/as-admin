@@ -5,3 +5,9 @@ dist-ssr
 *.local
 .env
 stats.html
+/pnpm-lock.yaml
+/.idea/.gitignore
+/.idea/as-admin.iml
+/.idea/modules.xml
+/.idea/inspectionProfiles/Project_Default.xml
+/.idea/vcs.xml

@@ -37,7 +37,7 @@ const notifications: ComponentPublicInstance[] = []
 
 let idStart = 0
 
-export const Notification = (
+export const Notification = ((
   options: Partial<NotificationOptions> = {}
 ): ComponentPublicInstance => {
   options.placement = options.placement || Positions.TR
@@ -81,7 +81,8 @@ export const Notification = (
   notifications.push(instance)
 
   return instance
-}
+}) as ((options: Partial<NotificationOptions>) => ComponentPublicInstance) &
+  NotificationInstance
 
 Notification.close = (id: number, onClose?: () => void) => {
   const index = notifications.findIndex(

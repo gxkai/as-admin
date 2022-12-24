@@ -208,11 +208,11 @@ export default defineComponent({
   },
   emits: ['update:model-value'],
   setup(props, { emit }) {
-    let editor = ref<any>(undefined as unknown as Editor)
+    const editor = ref<any>(undefined as unknown as Editor)
     const content = toRefs(props).modelValue
 
     if (typeof document !== 'undefined') {
-      editor = useEditor({
+      editor.value = useEditor({
         content: content.value || '<p></p>',
         extensions: [StarterKit, Image, Link, IframeExtension],
         onUpdate: () => {

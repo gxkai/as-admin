@@ -34,12 +34,12 @@ export default defineComponent({
   },
   emits: ['changed'],
   setup(props, { emit }) {
-    let editor = ref<any>(undefined as unknown as Editor)
+    const editor = ref<any>(undefined as unknown as Editor)
     const { value: content, placeholder } = toRefs(props)
     const isFocused = ref(false)
 
     if (typeof document !== 'undefined') {
-      editor = useEditor({
+      editor.value = useEditor({
         content: content.value || '<p></p>',
         extensions: [
           StarterKit,

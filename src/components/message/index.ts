@@ -34,7 +34,7 @@ const messages: ComponentPublicInstance[] = []
 
 let idStart = 0
 
-export const Message = (
+export const Message = ((
   options: IMessageOptions = {}
 ): ComponentPublicInstance => {
   const onClose = options.onClose
@@ -68,7 +68,7 @@ export const Message = (
   messages.push(instance)
 
   return instance
-}
+}) as ((options: IMessageOptions) => ComponentPublicInstance) & MessageInstance
 
 Message.close = (id: number, onClose?: () => void): void => {
   const index = messages.findIndex((el) => (el.$data as any).id === id)
